@@ -1,0 +1,7 @@
+export const COMMAND_UP = 'up';
+export const COMMAND_CD = 'cd';
+export const COMMAND_LS = 'ls';
+export const COMMAND_CAT = 'cat';
+export const COMMAND_ADD = 'add';
+export const ERROR_TEXT_INPUT = 'Invalid input';
+export const ERROR_TEXT_EXECUTION = 'Operation failed';
