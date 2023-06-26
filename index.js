@@ -1,17 +1,31 @@
 import { homedir } from 'os';
 import { createInterface } from 'readline';
 import { stdin, stdout } from 'process';
-import { greetUser, sayGoodbye } from './src/utils/index.js';
+import { greetUser, sayGoodbye, showCurrentDirectory } from './src/utils/index.js';
 import {
   COMMAND_ADD,
   COMMAND_CAT,
   COMMAND_CD,
+  COMMAND_CP,
   COMMAND_LS,
+  COMMAND_MV,
+  COMMAND_RM,
+  COMMAND_RN,
   COMMAND_UP,
   ERROR_TEXT_EXECUTION,
   ERROR_TEXT_INPUT,
 } from './src/constants/index.js';
-import { goUpper, changeDirectory, getFilesList, readFile, createFile } from './src/modules/index.js';
+import {
+  goUpper,
+  changeDirectory,
+  getFilesList,
+  readFile,
+  createFile,
+  renameFile,
+  copyFile,
+  removeFile,
+  moveFile,
+} from './src/modules/index.js';
 
 const getFileManager = async () => {
   try {
@@ -45,20 +59,44 @@ const getFileManager = async () => {
           break;
 
         case COMMAND_CAT:
-          const fileForReadName = args[0];
-          await readFile(currDir, fileForReadName);
+          const fileForReadPath = args[0];
+          await readFile(currDir, fileForReadPath);
           break;
 
         case COMMAND_ADD:
-          const newFileName = args[0];
-          console.log('newFileName', newFileName);
-          await createFile(currDir, newFileName);
+          const newCreateFileName = args[0];
+          await createFile(currDir, newCreateFileName);
+          break;
+
+        case COMMAND_RN:
+          const oldRenameFilePath = args[0];
+          const newRenameFilePath = args[1];
+          await renameFile(currDir, oldRenameFilePath, newRenameFilePath);
+          break;
+
+        case COMMAND_CP:
+          const oldCopyFilePath = args[0];
+          const newCopyFilePath = args[1];
+          await copyFile(currDir, oldCopyFilePath, newCopyFilePath);
+          break;
+
+        case COMMAND_MV:
+          const oldMoveFilePath = args[0];
+          const newMoveFilePath = args[1];
+          await moveFile(currDir, oldMoveFilePath, newMoveFilePath);
+          break;
+
+        case COMMAND_RM:
+          const fileForRemovePath = args[0];
+          await removeFile(currDir, fileForRemovePath);
           break;
 
         default:
           console.log(ERROR_TEXT_INPUT);
           break;
       }
+
+      showCurrentDirectory(currDir);
     });
 
     readline.on('close', sayGoodbye.bind(null, username));

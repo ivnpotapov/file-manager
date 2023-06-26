@@ -1,5 +1,4 @@
 import { readdir } from 'fs/promises';
-import { showCurrentDirectory } from '../utils/index.js';
 import { ERROR_TEXT_EXECUTION } from '../constants/index.js';
 
 const TEXT_DIR = 'Directory';
@@ -26,8 +25,6 @@ export const getFilesList = async (currDir) => {
     });
 
     console.table(tableSorted);
-
-    showCurrentDirectory(currDir);
   } catch (err) {
     console.log(ERROR_TEXT_EXECUTION);
   }

@@ -1,5 +1,4 @@
 import { dirname } from 'path';
-import { showCurrentDirectory } from '../utils/index.js';
 
 export const goUpper = (currDir) => {
   let newPath = currDir;
@@ -9,8 +8,6 @@ export const goUpper = (currDir) => {
     const parentDir = dirname(currDir);
     newPath = parentDir;
   }
-
-  showCurrentDirectory(newPath);
 
   return newPath;
 };
