@@ -8,5 +8,6 @@ export const COMMAND_CP = 'cp';
 export const COMMAND_MV = 'mv';
 export const COMMAND_RM = 'rm';
 export const COMMAND_OS = 'os';
+export const COMMAND_HASH = 'hash';
 export const ERROR_TEXT_INPUT = 'Invalid input';
 export const ERROR_TEXT_EXECUTION = 'Operation failed';

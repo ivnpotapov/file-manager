@@ -7,6 +7,7 @@ import {
   COMMAND_CAT,
   COMMAND_CD,
   COMMAND_CP,
+  COMMAND_HASH,
   COMMAND_LS,
   COMMAND_MV,
   COMMAND_OS,
@@ -27,6 +28,7 @@ import {
   removeFile,
   moveFile,
   getOsInfo,
+  getHash,
 } from './src/modules/index.js';
 
 const getFileManager = async () => {
@@ -96,6 +98,11 @@ const getFileManager = async () => {
         case COMMAND_OS:
           const argv = args[0];
           getOsInfo(currDir, argv);
+          break;
+
+        case COMMAND_HASH:
+          const fileForHashPath = args[0];
+          await getHash(currDir, fileForHashPath);
           break;
 
         default:
