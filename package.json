@@ -1,0 +1,20 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "RSshool Node.js 2023Q2",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivnpotapov/file-manager.git"
+  },
+  "author": "ivnpotapov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivnpotapov/file-manager/issues"
+  },
+  "homepage": "https://github.com/ivnpotapov/file-manager#readme"
+}
