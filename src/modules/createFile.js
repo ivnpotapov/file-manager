@@ -4,7 +4,7 @@ import { ERROR_TEXT_EXECUTION } from '../constants/index.js';
 
 export const createFile = async (currDir, newFileName) => {
   const filePath = resolve(currDir, newFileName);
-  console.log('filePath', filePath);
+
   try {
     await appendFile(filePath, '');
   } catch (errorAppend) {

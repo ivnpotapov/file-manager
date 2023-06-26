@@ -6,7 +6,10 @@ import {
   COMMAND_ADD,
   COMMAND_CAT,
   COMMAND_CD,
+  COMMAND_COMPRESS,
   COMMAND_CP,
+  COMMAND_DECOMPRESS,
+  COMMAND_EXIT,
   COMMAND_HASH,
   COMMAND_LS,
   COMMAND_MV,
@@ -29,6 +32,8 @@ import {
   moveFile,
   getOsInfo,
   getHash,
+  compressFile,
+  decompressFile,
 } from './src/modules/index.js';
 
 const getFileManager = async () => {
@@ -103,6 +108,22 @@ const getFileManager = async () => {
         case COMMAND_HASH:
           const fileForHashPath = args[0];
           await getHash(currDir, fileForHashPath);
+          break;
+
+        case COMMAND_COMPRESS:
+          const fileForCompressPath = args[0];
+          const newArchivePath = args[1];
+          await compressFile(currDir, fileForCompressPath, newArchivePath);
+          break;
+
+        case COMMAND_DECOMPRESS:
+          const archivePath = args[0];
+          const decompressFilePath = args[1];
+          await decompressFile(currDir, archivePath, decompressFilePath);
+          break;
+
+        case COMMAND_EXIT:
+          readline.close();
           break;
 
         default:
