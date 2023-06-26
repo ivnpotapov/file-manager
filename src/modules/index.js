@@ -7,3 +7,4 @@ export * from './renameFile.js';
 export * from './copyFile.js';
 export * from './moveFile.js';
 export * from './removeFile.js';
+export * from './getOsInfo.js';

@@ -9,6 +9,7 @@ import {
   COMMAND_CP,
   COMMAND_LS,
   COMMAND_MV,
+  COMMAND_OS,
   COMMAND_RM,
   COMMAND_RN,
   COMMAND_UP,
@@ -25,6 +26,7 @@ import {
   copyFile,
   removeFile,
   moveFile,
+  getOsInfo,
 } from './src/modules/index.js';
 
 const getFileManager = async () => {
@@ -89,6 +91,11 @@ const getFileManager = async () => {
         case COMMAND_RM:
           const fileForRemovePath = args[0];
           await removeFile(currDir, fileForRemovePath);
+          break;
+
+        case COMMAND_OS:
+          const argv = args[0];
+          getOsInfo(currDir, argv);
           break;
 
         default:
